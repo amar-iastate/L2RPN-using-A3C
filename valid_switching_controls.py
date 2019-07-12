@@ -1,3 +1,6 @@
+__author__ = 'Amar'
+# Copyright (C) 2018 - 2019 Amarsagar Reddy Ramapuram Matavalam
+# Authors:  Amarsagar Reddy Ramapuram Matavalam <amar@iastate.edu>
 
 import numpy as np
 import itertools
