@@ -20,6 +20,10 @@ import pypownet.chronic
 # global variables for threading
 episode = 0
 scores = []
+# hyper parameters for training
+game_level_global = "datasets_sub_7" # choose one of ["datasets_sub_7","datasets_sub_4","datasets"]
+game_over_mode_global = "easy" # choose one of ["easy", "soft", "hard"]
+chronic_loop_mode_global = "natural" # choose one of ["natural", "random", "fixed"]
 time_step_end = 1000 # this is the maximum timesteps per episode
 EPISODES_train = 500 # increase these episodes to 3k in the beginning as the episodes will be very short in the beginning
 training_batch_size = 100 # memory size to be used for updating the NN model weights
@@ -28,24 +32,15 @@ hidden_layer_1_size = 200 # this is the shared layer between actor and critic
 hidden_layer_2_size = 50 # this is the hidden layer size in actor and critic
 
 input_dir = 'public_data/'
-# game_over_mode = ["easy", "soft", "hard"]
-# game_level = ["datasets_sub_7","datasets_sub_4","datasets"]
-def set_environement(game_level = "datasets", start_id=40):
+
+def set_environement(game_level = game_level_global, chronic_looping_mode = chronic_loop_mode_global, game_over_mode = game_over_mode_global, start_id=40):
     """
         Load the first chronic (scenario) in the directory public_data/datasets
     """
     return pypownet.environment.RunEnv(parameters_folder=os.path.abspath(input_dir),
                                               game_level=game_level,
-                                              chronic_looping_mode='natural', start_id=start_id,
-                                              game_over_mode="easy")
-    # return pypownet.environment.RunEnv(parameters_folder=os.path.abspath(input_dir),
-    #                                           game_level=game_level,
-    #                                           chronic_looping_mode='random', start_id=start_id,
-    #                                           game_over_mode="hard")
-    # return pypownet.environment.RunEnv(parameters_folder=os.path.abspath(input_dir),
-    #                                           game_level=game_level,
-    #                                           chronic_looping_mode='fixed', start_id=start_id,
-    #                                           game_over_mode="hard")
+                                              chronic_looping_mode=chronic_looping_mode, start_id=start_id,
+                                              game_over_mode=game_over_mode)
 
 # This is A3C(Asynchronous Advantage Actor Critic) agent(global)
 class A3CAgent:
