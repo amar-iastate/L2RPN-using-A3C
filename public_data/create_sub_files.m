@@ -1,7 +1,8 @@
 clear all
-original_folder = 'C:\Users\amar\Downloads\RTE_starting_kit\public_data\datasets\chronics\';
-sub_sample = 7;
-dest_folder = strcat('C:\Users\amar\Downloads\RTE_starting_kit\public_data\datasets_sub_',num2str(sub_sample),'\chronics');
+currentFolder = pwd
+original_folder = strcat(pwd,'\datasets\chronics\');
+sub_sample = 7; % this can be changed based on the required subsampling
+dest_folder = strcat(pwd,'\datasets_sub_',num2str(sub_sample),'\chronics');
 mkdir(dest_folder)
 file_id = {'_N_datetimes','_N_loads_p','_N_loads_p_planned','_N_loads_q','_N_loads_q_planned','_N_prods_p','_N_prods_p_planned','_N_prods_v','_N_prods_v_planned','hazards','maintenance','_N_simu_ids' };
 for k = 0:49 %0
