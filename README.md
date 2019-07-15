@@ -11,6 +11,8 @@ Reinforcement Learning using the Actor-Critic framework for the L2RPN challenge 
 Pypownet Installation and Documentation : https://github.com/MarvinLer/pypownet
 
 # Explaination of Files
+- PDF Files
+    - Amar_L2RPN_IJCNN_git.pdf - Presentation of the method at IJCNN-2019 in the L2RPN workshop. Summarizes the idea beind the approach and the training methodology. 
 - Numpy Files
     - valid_actions_array_uniq.npz - matrix of valid unique actions 
     - valid_actions_masking_subid_perm.npz - matrix that maps the substation-Ids to the unique valid actions to be used for masking the output of the actor
